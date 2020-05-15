@@ -1,12 +1,14 @@
 #!/bin/bash
-workdir="$(pwd)"
+
+# Set Exit on Error
+#set -e
+workdir=~
+#workdir="$(pwd)"
 subdir1="Beginning Bash Scripting"
 subdir2="Beginning Bash Scripting Edit Together"
-pwd
 rm -r "$workdir"/"$subdir2"/*
 cp "$workdir"/"$subdir1"/* "$workdir"/"$subdir2"/
 cd "$workdir"/"$subdir2"
-pwd
 
 for f in *.epub; do
 	stubname="$(basename "$f" .epub)"
