@@ -1,6 +1,7 @@
 import shutil, os, zipfile
 from pathlib import Path
 import string
+import glob
 
 subdir1 = 'B:\OneDrive\Documents\ePublications\Beginning Bash Scripting'
 subdir2 = 'W:\Computer Studies\Beginning Bash Scripting Edit Together'
@@ -10,27 +11,35 @@ mylist = list(range(1,26))
 chapters=[]
 
 for value in mylist:
-    value = 'Chapter-' + str(value)
+    value = '-Chapter-' + str(value) + '-'
     chapters.append(value)
 
 myAlpha = list(string.ascii_uppercase)
 
 for value in myAlpha[0:7]:
-    value = 'Appendix-' + value
+    value = '-Appendix-' + value + '-'
     chapters.append(value)
 
 print(chapters)
 
-for folderName, subfolders, filenames in os.walk(subdir3):
-    print('The current folder is ' + folderName)
+os.chdir(subdir3)
 
-    for subfolder in subfolders:
-        print('SUBFOLDER of ' + folderName + ': ' + subfolder)
-        
-    for filename in filenames:
-        print('FILE INSIDE ' + folderName + ': ' + filename)
+for myglob in chapters:
+    for dir in glob.glob("*" + myglob + "*"):
+        print(dir)
 
-    print('')
+##for folderName, subfolders, filenames in os.walk(subdir3):
+##    print('The current folder is ' + folderName)
+##
+##    for subfolder in subfolders:
+##        print('SUBFOLDER of ' + folderName + ': ' + subfolder)
+##        
+##    for filename in filenames:
+##        print('FILE INSIDE ' + folderName + ': ' + filename)
+##
+##    print('')
+
+    
 ##for char in range(19):
 ##    print(char)
 ##
